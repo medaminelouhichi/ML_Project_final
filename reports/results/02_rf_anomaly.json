@@ -1,0 +1,113 @@
+{
+  "task": "D\u00e9tection d'anomalies",
+  "model": "Random Forest",
+  "balancing": "Sur-\u00e9chantillonnage",
+  "params": {
+    "n_estimators": 200,
+    "min_samples_split": 5,
+    "min_samples_leaf": 1,
+    "max_features": 0.5,
+    "max_depth": 20
+  },
+  "threshold": 0.48104652865931186,
+  "fit_time_s": 99.6105272769928,
+  "valid_f1": 0.9988879670979471,
+  "test": {
+    "accuracy": 0.9984473318623845,
+    "balanced_accuracy": 0.9976090006344174,
+    "precision": 0.9988352804150638,
+    "recall": 0.9991526620533823,
+    "f1": 0.9989939460260868,
+    "mcc": 0.995594246971377,
+    "tn": 8354.0,
+    "fp": 33.0,
+    "fn": 24.0,
+    "tp": 28300.0,
+    "fpr": 0.003934660784547514,
+    "fnr": 0.0008473379466177093,
+    "roc_auc": 0.9999805980456065,
+    "pr_auc": 0.9999942420342872,
+    "brier": 0.0012465638929474616
+  },
+  "test_default_threshold": {
+    "accuracy": 0.9984473318623845,
+    "balanced_accuracy": 0.9976509638330227,
+    "precision": 0.9988704952172532,
+    "recall": 0.9991173563056066,
+    "f1": 0.9989939105109875,
+    "mcc": 0.9955945216559317,
+    "tn": 8355.0,
+    "fp": 32.0,
+    "fn": 25.0,
+    "tp": 28299.0,
+    "fpr": 0.0038154286395612256,
+    "fnr": 0.0008826436943934473,
+    "roc_auc": 0.9999805980456065,
+    "pr_auc": 0.9999942420342872,
+    "brier": 0.0012465638929474616
+  },
+  "brier_test": {
+    "Brut": 0.0012465638929474616,
+    "Platt": 0.0012513920258024425,
+    "Isotonique": 0.0012491560684584103
+  },
+  "balancing_cv": {
+    "Aucun": {
+      "f1_macro": 0.9971,
+      "balanced_acc": 0.99691,
+      "pr_auc": 0.99999,
+      "recall": 0.99883,
+      "precision": 0.99852,
+      "std_f1_macro": 0.00055,
+      "temps_s": 8.89204
+    },
+    "class_weight": {
+      "f1_macro": 0.99707,
+      "balanced_acc": 0.99665,
+      "pr_auc": 0.99997,
+      "recall": 0.99902,
+      "precision": 0.99832,
+      "std_f1_macro": 0.00072,
+      "temps_s": 8.8746
+    },
+    "Sous-\u00e9chantillonnage": {
+      "f1_macro": 0.99563,
+      "balanced_acc": 0.99695,
+      "pr_auc": 0.9999,
+      "recall": 0.99689,
+      "precision": 0.99912,
+      "std_f1_macro": 0.00052,
+      "temps_s": 6.29604
+    },
+    "Sur-\u00e9chantillonnage": {
+      "f1_macro": 0.99735,
+      "balanced_acc": 0.99743,
+      "pr_auc": 0.99997,
+      "recall": 0.99873,
+      "precision": 0.99886,
+      "std_f1_macro": 0.00028,
+      "temps_s": 11.35009
+    },
+    "SMOTE": {
+      "f1_macro": 0.99727,
+      "balanced_acc": 0.9973,
+      "pr_auc": 0.99999,
+      "recall": 0.99873,
+      "precision": 0.99878,
+      "std_f1_macro": 0.00042,
+      "temps_s": 14.23487
+    }
+  },
+  "error_by_type": {
+    "normal": 0.003934660784547514,
+    "scanning": 0.00026860059092130003,
+    "dos": 0.0017035775127768314,
+    "ddos": 0.0040030022516887665,
+    "password": 0.0,
+    "injection": 0.0,
+    "xss": 0.0,
+    "backdoor": 0.0,
+    "ransomware": 0.0,
+    "mitm": 0.009615384615384616
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "n_rows_raw": 211043,
+  "dup_exact_raw": 20569,
+  "n_rows_dedup": 183566,
+  "n_conflicts": 12,
+  "n_rows_clean": 183554,
+  "train": 110132,
+  "valid": 36711,
+  "test": 36711,
+  "n_features": 33,
+  "balancing_probe_label": {
+    "Aucun": {
+      "n_train": 30000,
+      "balanced_acc": 0.9951,
+      "mcc": 0.9914,
+      "f1_normal": 0.9934,
+      "recall_normal": 0.9918,
+      "f1_attaque": 0.998,
+      "temps_s": 0.3716
+    },
+    "class_weight": {
+      "n_train": 30000,
+      "balanced_acc": 0.9963,
+      "mcc": 0.9914,
+      "f1_normal": 0.9933,
+      "recall_normal": 0.9951,
+      "f1_attaque": 0.998,
+      "temps_s": 0.5052
+    },
+    "RandomUnderSampler": {
+      "n_train": 13734,
+      "balanced_acc": 0.9958,
+      "mcc": 0.9888,
+      "f1_normal": 0.9914,
+      "recall_normal": 0.9955,
+      "f1_attaque": 0.9974,
+      "temps_s": 0.2023
+    },
+    "RandomOverSampler": {
+      "n_train": 46266,
+      "balanced_acc": 0.9961,
+      "mcc": 0.9923,
+      "f1_normal": 0.9941,
+      "recall_normal": 0.9938,
+      "f1_attaque": 0.9983,
+      "temps_s": 0.5868
+    },
+    "SMOTE": {
+      "n_train": 46266,
+      "balanced_acc": 0.9959,
+      "mcc": 0.992,
+      "f1_normal": 0.9938,
+      "recall_normal": 0.9936,
+      "f1_attaque": 0.9982,
+      "temps_s": 1.0066
+    }
+  },
+  "balancing_probe_type": {
+    "Aucun": {
+      "n_train": 30000,
+      "balanced_acc": 0.9575,
+      "mcc": 0.9799,
+      "f1_macro": 0.9519,
+      "f1_mitm": 0.674,
+      "recall_mitm": 0.7356,
+      "temps_s": 1.0022
+    },
+    "class_weight": {
+      "n_train": 30000,
+      "balanced_acc": 0.9777,
+      "mcc": 0.9792,
+      "f1_macro": 0.9528,
+      "f1_mitm": 0.6828,
+      "recall_mitm": 0.9471,
+      "temps_s": 1.0884
+    },
+    "RandomUnderSampler": {
+      "n_train": 1710,
+      "balanced_acc": 0.9606,
+      "mcc": 0.9523,
+      "f1_macro": 0.9085,
+      "f1_mitm": 0.4037,
+      "recall_mitm": 0.9519,
+      "temps_s": 1.3874
+    },
+    "RandomOverSampler": {
+      "n_train": 68670,
+      "balanced_acc": 0.9665,
+      "mcc": 0.981,
+      "f1_macro": 0.9554,
+      "f1_mitm": 0.6996,
+      "recall_mitm": 0.8173,
+      "temps_s": 2.3769
+    },
+    "SMOTE": {
+      "n_train": 68670,
+      "balanced_acc": 0.9742,
+      "mcc": 0.9805,
+      "f1_macro": 0.9565,
+      "f1_mitm": 0.7148,
+      "recall_mitm": 0.9038,
+      "temps_s": 2.9806
+    }
+  }
+}

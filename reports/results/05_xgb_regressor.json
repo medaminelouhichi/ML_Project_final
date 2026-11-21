@@ -1,0 +1,90 @@
+{
+  "task": "Pr\u00e9diction du type",
+  "model": "XGBoost Regressor",
+  "weighting": "Aucun",
+  "params": {
+    "subsample": 1.0,
+    "reg_lambda": 1,
+    "min_child_weight": 1,
+    "max_depth": 10,
+    "learning_rate": 0.03,
+    "gamma": 0.5,
+    "colsample_bytree": 0.5,
+    "n_estimators": 2000
+  },
+  "cutpoints": [
+    0.9329067500000003,
+    1.7846584687500002,
+    2.2898591689609376,
+    3.8034612695937495,
+    4.37583607875,
+    5.22570164725,
+    6.30604336480625,
+    7.293423850643438,
+    8.039482617835574
+  ],
+  "fit_time_s": 15.882526159286499,
+  "valid_f1_macro_cuts": 0.9194272395403464,
+  "test_rounded": {
+    "mae": 0.07375095039606094,
+    "rmse": 0.3559299872110399,
+    "r2": 0.9828659892082214,
+    "accuracy": 0.9717795756040424,
+    "balanced_accuracy": 0.8928235266469489,
+    "f1_macro": 0.9008598128406607,
+    "within_1_class": 0.9887772057421481
+  },
+  "test": {
+    "mae": 0.07375095039606094,
+    "rmse": 0.3559299872110399,
+    "r2": 0.9828659892082214,
+    "accuracy": 0.9761379423061208,
+    "balanced_accuracy": 0.9099301406616874,
+    "f1_macro": 0.9224628036335902,
+    "within_1_class": 0.9887227261583722
+  },
+  "weighting_cv": {
+    "Aucun": {
+      "mae": 0.11333,
+      "rmse": 0.44473,
+      "r2": 0.97334,
+      "accuracy": 0.95675,
+      "balanced_accuracy": 0.87002,
+      "f1_macro": 0.87257,
+      "within_1_class": 0.98425,
+      "fit_s": 1.01608
+    },
+    "Poids balanced": {
+      "mae": 0.11648,
+      "rmse": 0.44715,
+      "r2": 0.97306,
+      "accuracy": 0.95425,
+      "balanced_accuracy": 0.86661,
+      "f1_macro": 0.86849,
+      "within_1_class": 0.98413,
+      "fit_s": 1.00435
+    },
+    "Poids racine (adouci)": {
+      "mae": 0.11501,
+      "rmse": 0.43923,
+      "r2": 0.97401,
+      "accuracy": 0.9547,
+      "balanced_accuracy": 0.86657,
+      "f1_macro": 0.86806,
+      "within_1_class": 0.98385,
+      "fit_s": 1.17462
+    }
+  },
+  "recall_by_type": {
+    "normal": 0.9895075712412066,
+    "scanning": 0.9836153639538007,
+    "dos": 0.9683134582623509,
+    "ddos": 0.9564673505128847,
+    "password": 0.9843828715365239,
+    "injection": 0.9614228456913828,
+    "xss": 0.9703856749311295,
+    "backdoor": 0.9991982896846606,
+    "ransomware": 0.997546442341395,
+    "mitm": 0.28846153846153844
+  }
+}

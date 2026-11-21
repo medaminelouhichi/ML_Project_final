@@ -1,0 +1,163 @@
+{
+  "task": "D\u00e9tection d'anomalies",
+  "model": "SVM (SVM RBF (20k lignes))",
+  "balancing": "Aucun",
+  "params": {
+    "linear_C": 45.2035365636025,
+    "rbf_C": 0.5,
+    "rbf_gamma": 0.1
+  },
+  "threshold": -0.026820916349602084,
+  "fit_time_s": 1.1258666515350342,
+  "valid_f1": 0.9971228355073871,
+  "test": {
+    "accuracy": 0.994633760998066,
+    "balanced_accuracy": 0.9920323215933253,
+    "precision": 0.996224551003846,
+    "recall": 0.9968224827001836,
+    "f1": 0.9965234271596224,
+    "mcc": 0.9847680016471201,
+    "tn": 8280.0,
+    "fp": 107.0,
+    "fn": 90.0,
+    "tp": 28234.0,
+    "fpr": 0.012757839513532848,
+    "fnr": 0.00317751729981641,
+    "roc_auc": 0.9991845748796477,
+    "pr_auc": 0.9997008629848134,
+    "brier": NaN
+  },
+  "test_default_threshold": {
+    "accuracy": 0.99457928141429,
+    "balanced_accuracy": 0.9919970158455497,
+    "precision": 0.9962242845548538,
+    "recall": 0.9967518712046322,
+    "f1": 0.9964880080475795,
+    "mcc": 0.9846144570339889,
+    "tn": 8280.0,
+    "fp": 107.0,
+    "fn": 92.0,
+    "tp": 28232.0,
+    "fpr": 0.012757839513532848,
+    "fnr": 0.003248128795367886,
+    "roc_auc": 0.9991845748796477,
+    "pr_auc": 0.9997008629848134,
+    "brier": NaN
+  },
+  "brier_test": {
+    "Platt": 0.004809278865087532,
+    "Isotonique": 0.004222345083814249
+  },
+  "variants_valid": {
+    "SVM lin\u00e9aire": {
+      "accuracy": 0.99499,
+      "balanced_accuracy": 0.99302,
+      "precision": 0.99686,
+      "recall": 0.99665,
+      "f1": 0.99675,
+      "mcc": 0.98579,
+      "tn": 8298.0,
+      "fp": 89.0,
+      "fn": 95.0,
+      "tp": 28229.0,
+      "fpr": 0.01061,
+      "fnr": 0.00335,
+      "roc_auc": 0.999,
+      "pr_auc": 0.99972,
+      "fit_s": 1.9596
+    },
+    "SVM RBF (20k lignes)": {
+      "accuracy": 0.99561,
+      "balanced_accuracy": 0.99372,
+      "precision": 0.99711,
+      "recall": 0.99721,
+      "f1": 0.99716,
+      "mcc": 0.98756,
+      "tn": 8305.0,
+      "fp": 82.0,
+      "fn": 79.0,
+      "tp": 28245.0,
+      "fpr": 0.00978,
+      "fnr": 0.00279,
+      "roc_auc": 0.99928,
+      "pr_auc": 0.99979,
+      "fit_s": 1.12587
+    },
+    "RBF Nystr\u00f6m + lin\u00e9aire": {
+      "accuracy": 0.99207,
+      "balanced_accuracy": 0.99209,
+      "precision": 0.99766,
+      "recall": 0.99206,
+      "f1": 0.99485,
+      "mcc": 0.97774,
+      "tn": 8321.0,
+      "fp": 66.0,
+      "fn": 225.0,
+      "tp": 28099.0,
+      "fpr": 0.00787,
+      "fnr": 0.00794,
+      "roc_auc": 0.99928,
+      "pr_auc": 0.99979,
+      "fit_s": 16.09601
+    }
+  },
+  "balancing_cv": {
+    "Aucun": {
+      "f1_macro": 0.99291,
+      "balanced_acc": 0.99262,
+      "pr_auc": 0.99973,
+      "recall": 0.99702,
+      "precision": 0.99653,
+      "std_f1_macro": 0.00066,
+      "temps_s": 2.06834
+    },
+    "class_weight": {
+      "f1_macro": 0.99226,
+      "balanced_acc": 0.99408,
+      "pr_auc": 0.99975,
+      "recall": 0.99493,
+      "precision": 0.998,
+      "std_f1_macro": 0.00063,
+      "temps_s": 1.81692
+    },
+    "Sous-\u00e9chantillonnage": {
+      "f1_macro": 0.99215,
+      "balanced_acc": 0.99415,
+      "pr_auc": 0.99974,
+      "recall": 0.99472,
+      "precision": 0.9981,
+      "std_f1_macro": 0.00046,
+      "temps_s": 1.52689
+    },
+    "Sur-\u00e9chantillonnage": {
+      "f1_macro": 0.99198,
+      "balanced_acc": 0.99379,
+      "pr_auc": 0.99975,
+      "recall": 0.9948,
+      "precision": 0.99787,
+      "std_f1_macro": 0.00045,
+      "temps_s": 2.3792
+    },
+    "SMOTE": {
+      "f1_macro": 0.99243,
+      "balanced_acc": 0.99413,
+      "pr_auc": 0.99974,
+      "recall": 0.99511,
+      "precision": 0.99797,
+      "std_f1_macro": 0.00041,
+      "temps_s": 3.50823
+    }
+  },
+  "error_by_type": {
+    "normal": 0.012757839513532848,
+    "scanning": 0.00026860059092130003,
+    "dos": 0.00272572402044293,
+    "ddos": 0.013760320240180136,
+    "password": 0.0012594458438287153,
+    "injection": 0.000250501002004008,
+    "xss": 0.001721763085399449,
+    "backdoor": 0.0016034206306787815,
+    "ransomware": 0.0003505082369435682,
+    "mitm": 0.038461538461538464
+  }
+}

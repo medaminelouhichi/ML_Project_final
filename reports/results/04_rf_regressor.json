@@ -1,0 +1,86 @@
+{
+  "task": "Pr\u00e9diction du type",
+  "model": "Random Forest Regressor",
+  "weighting": "Aucun",
+  "params": {
+    "n_estimators": 200,
+    "min_samples_leaf": 1,
+    "max_features": 0.3,
+    "max_depth": null
+  },
+  "cutpoints": [
+    0.9824503906250002,
+    1.9076705156250002,
+    2.3536653906250002,
+    3.9461892366406244,
+    4.2280463859375,
+    5.3072743526171875,
+    6.348869035124023,
+    7.5,
+    8.00075
+  ],
+  "fit_time_s": 40.9514946937561,
+  "valid_f1_macro_cuts": 0.9302423518858296,
+  "test_rounded": {
+    "mae": 0.047847511645011026,
+    "rmse": 0.34854898129525835,
+    "r2": 0.9835692675112028,
+    "accuracy": 0.9774454523167443,
+    "balanced_accuracy": 0.9037360237066945,
+    "f1_macro": 0.9140181957799817,
+    "within_1_class": 0.9902209147122116
+  },
+  "test": {
+    "mae": 0.047847511645011026,
+    "rmse": 0.34854898129525835,
+    "r2": 0.9835692675112028,
+    "accuracy": 0.9800059927542154,
+    "balanced_accuracy": 0.9194866112837348,
+    "f1_macro": 0.9334552086520984,
+    "within_1_class": 0.9903026340878756
+  },
+  "weighting_cv": {
+    "Aucun": {
+      "mae": 0.06891,
+      "rmse": 0.43959,
+      "r2": 0.97394,
+      "accuracy": 0.96753,
+      "balanced_accuracy": 0.88357,
+      "f1_macro": 0.88812,
+      "within_1_class": 0.9856,
+      "fit_s": 11.7866
+    },
+    "Poids balanced": {
+      "mae": 0.07119,
+      "rmse": 0.44266,
+      "r2": 0.97358,
+      "accuracy": 0.96653,
+      "balanced_accuracy": 0.88139,
+      "f1_macro": 0.88503,
+      "within_1_class": 0.98505,
+      "fit_s": 11.34376
+    },
+    "Poids racine (adouci)": {
+      "mae": 0.06936,
+      "rmse": 0.4423,
+      "r2": 0.97363,
+      "accuracy": 0.96758,
+      "balanced_accuracy": 0.8831,
+      "f1_macro": 0.88743,
+      "within_1_class": 0.9859,
+      "fit_s": 11.62003
+    }
+  },
+  "recall_by_type": {
+    "normal": 0.9893883390962204,
+    "scanning": 0.9897931775449906,
+    "dos": 0.9621805792163544,
+    "ddos": 0.9764823617713285,
+    "password": 0.9843828715365239,
+    "injection": 0.968436873747495,
+    "xss": 0.9758953168044077,
+    "backdoor": 0.9983965793693212,
+    "ransomware": 0.9989484752891693,
+    "mitm": 0.35096153846153844
+  }
+}
