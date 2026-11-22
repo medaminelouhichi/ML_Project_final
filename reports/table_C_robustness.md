@@ -1,0 +1,13 @@
+# Tableau C — contrôle de robustesse (validation)
+
+| configuration                                          | type             |   n_features |   f1_macro |   f1_macro_std |   specificity |   specificity_std |   recall |   recall_std |    mcc |   mcc_std |
+|:-------------------------------------------------------|:-----------------|-------------:|-----------:|---------------:|--------------:|------------------:|---------:|-------------:|-------:|----------:|
+| (a) toutes les variables                               | Random Forest    |           35 |     0.9969 |         0.0000 |        0.9942 |            0.0001 |   0.9989 |       0.0000 | 0.9938 |    0.0001 |
+| (b) sans dst_port / dst_port_bucket                    | Random Forest    |           33 |     0.9963 |         0.0001 |        0.9919 |            0.0001 |   0.9990 |       0.0000 | 0.9926 |    0.0001 |
+| (c) sans port / service / protocole / DNS / HTTP / SSL | Random Forest    |           21 |     0.9957 |         0.0002 |        0.9906 |            0.0002 |   0.9989 |       0.0003 | 0.9914 |    0.0005 |
+| (e) comme (c) et sans conn_state                       | Random Forest    |           20 |     0.9948 |         0.0001 |        0.9895 |            0.0003 |   0.9984 |       0.0001 | 0.9897 |    0.0001 |
+| (d) volumes et durées seulement                        | Random Forest    |           16 |     0.9923 |         0.0002 |        0.9851 |            0.0003 |   0.9974 |       0.0002 | 0.9846 |    0.0004 |
+| arbre de décision, profondeur 1 (toutes variables)     | Référence simple |           35 |     0.8069 |         0.0000 |        0.5978 |            0.0000 |   0.9602 |       0.0000 | 0.6278 |    0.0000 |
+| arbre de décision, profondeur 2 (toutes variables)     | Référence simple |           35 |     0.8837 |         0.0000 |        0.9132 |            0.0000 |   0.9118 |       0.0000 | 0.7744 |    0.0000 |
+| arbre de décision, profondeur 3 (toutes variables)     | Référence simple |           35 |     0.9599 |         0.0000 |        0.9116 |            0.0000 |   0.9902 |       0.0000 | 0.9204 |    0.0000 |
+| classe majoritaire                                     | Référence simple |            0 |     0.4355 |         0.0000 |        0.0000 |            0.0000 |   1.0000 |       0.0000 | 0.0000 |    0.0000 |
