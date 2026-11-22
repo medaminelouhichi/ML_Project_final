@@ -1,6 +1,5 @@
 {
   "numeric_cols": [
-    "src_port",
     "dst_port",
     "duration",
     "src_bytes",
@@ -9,9 +8,14 @@
     "src_pkts",
     "src_ip_bytes",
     "dst_pkts",
+    "dst_ip_bytes",
     "dns_qclass",
     "dns_rcode",
+    "http_request_body_len",
+    "http_response_body_len",
     "http_status_code",
+    "has_http",
+    "has_ssl",
     "has_weird",
     "total_bytes",
     "total_pkts",
@@ -21,9 +25,7 @@
     "pkts_per_sec",
     "ip_overhead_src",
     "ip_overhead_dst",
-    "same_ports",
-    "src_internal",
-    "dst_internal"
+    "same_ports"
   ],
   "categorical_cols": [
     "proto",
@@ -38,25 +40,49 @@
   ],
   "type_order": [
     "normal",
-    "scanning",
-    "dos",
-    "ddos",
-    "password",
-    "injection",
-    "xss",
-    "backdoor",
     "ransomware",
-    "mitm"
+    "scanning",
+    "backdoor",
+    "dos",
+    "mitm",
+    "xss",
+    "ddos",
+    "injection",
+    "password"
   ],
+  "type_order_source": "piloté par les données (LDA, train)",
+  "encoding_study": {
+    "documenté": {
+      "f1_macro": 0.86787,
+      "f1_macro_std": 0.00299,
+      "rmse": 0.5566
+    },
+    "alphabétique": {
+      "f1_macro": 0.86759,
+      "f1_macro_std": 0.00793,
+      "rmse": 0.63919
+    },
+    "aléatoire (moy. 5 perm.)": {
+      "f1_macro": 0.85201,
+      "f1_macro_std": 0.01775,
+      "rmse": 0.5825
+    },
+    "piloté par les données": {
+      "f1_macro": 0.88608,
+      "f1_macro_std": 0.00347,
+      "rmse": 0.47309
+    }
+  },
   "random_state": 42,
   "split_sizes": {
-    "train": 110132,
-    "valid": 36711,
-    "test": 36711
+    "train": 65007,
+    "valid": 21482,
+    "test": 21438
   },
   "removed_columns": {
-    "src_ip": "identifiant d'hôte",
-    "dst_ip": "identifiant d'hôte",
+    "src_ip": "identifiant d'hôte : mémorisation de l'environnement du banc d'essai",
+    "dst_ip": "identifiant d'hôte : mémorisation de l'environnement du banc d'essai",
+    "src_port": "port source éphémère : rend les flux uniques, aucune valeur sémantique (la catégorie src_port_bucket est conservée)",
     "ssl_version": "> 99% de valeurs manquantes",
     "ssl_cipher": "> 99% de valeurs manquantes",
     "ssl_resumed": "> 99% de valeurs manquantes",
@@ -74,14 +100,9 @@
     "weird_addl": "> 99% de valeurs manquantes",
     "weird_notice": "> 99% de valeurs manquantes",
     "dns_query": "cardinalité élevée (725 modalités)",
-    "dst_ip_bytes": "corrélée à dst_pkts (|rho|=0.973)",
-    "dns_qtype": "corrélée à dns_qclass (|rho|=0.995)",
-    "has_dns": "corrélée à dns_qclass (|rho|=0.998)",
-    "has_http": "corrélée à http_status_code (|rho|=0.979)",
-    "bytes_per_pkt_src": "corrélée à src_bytes (|rho|=0.978)",
-    "bytes_per_pkt_dst": "corrélée à dst_bytes (|rho|=0.998)",
-    "http_response_body_len": "information mutuelle ~ 0 avec label ET type",
-    "has_ssl": "information mutuelle ~ 0 avec label ET type",
-    "http_request_body_len": "information mutuelle ~ 0 avec label ET type"
+    "dns_qtype": "corrélée à dns_qclass (|rho|=0.996)",
+    "has_dns": "corrélée à dns_qclass (|rho|=0.997)",
+    "bytes_per_pkt_src": "corrélée à src_bytes (|rho|=0.979)",
+    "bytes_per_pkt_dst": "corrélée à dst_bytes (|rho|=0.993)"
   }
 }

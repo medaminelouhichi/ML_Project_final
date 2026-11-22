@@ -1,0 +1,128 @@
+{
+  "task": "détection d'anomalies réseau (binaire, label) — expérience complémentaire non supervisée",
+  "model": "IsolationForest (variante A non supervisée ; variante B semi-supervisée)",
+  "strategy": "aucun (non supervisé)",
+  "params": {
+    "n_estimators": 300,
+    "contamination": "auto",
+    "max_samples": "auto",
+    "random_state": 42,
+    "preprocessing": "make_preprocessor(scale=False)"
+  },
+  "n_train_rows": 65007,
+  "fit_time_s": 2.4509975999826565,
+  "predict_time_ms_per_1k": 26.292144785741087,
+  "test": {
+    "accuracy": 0.20673570295736543,
+    "balanced_accuracy": 0.34007137110923213,
+    "precision": 0.43992248062015504,
+    "recall": 0.0958846246681149,
+    "specificity": 0.5842581175503494,
+    "f1": 0.1574514466904479,
+    "f1_macro": 0.20401216790718413,
+    "f1_weighted": 0.1785881636827642,
+    "mcc": -0.35795538670727683,
+    "tn": 2843,
+    "fp": 2023,
+    "fn": 14983,
+    "tp": 1589,
+    "fpr": 0.41574188244965066,
+    "fnr": 0.9041153753318851,
+    "roc_auc": 0.11883291175256466,
+    "pr_auc": 0.5974654328142546
+  },
+  "test_oracle_prior": {
+    "accuracy": 0.5460397425132941,
+    "balanced_accuracy": 0.35318609703113685,
+    "precision": 0.7063721940622737,
+    "recall": 0.7063721940622737,
+    "specificity": 0.0,
+    "f1": 0.7063721940622737,
+    "f1_macro": 0.35318609703113685,
+    "f1_weighted": 0.5460397425132941,
+    "mcc": -0.2936278059377263,
+    "tn": 0,
+    "fp": 4866,
+    "fn": 4866,
+    "tp": 11706,
+    "fpr": 1.0,
+    "fnr": 0.2936278059377263,
+    "roc_auc": 0.11883291175256466,
+    "pr_auc": 0.5974654328142546,
+    "note": "ORACLE : utilise les étiquettes (part d'attaques), non déployable",
+    "attack_prior": 0.7730198712566471
+  },
+  "test_semi_supervised": {
+    "accuracy": 0.9171564511614889,
+    "balanced_accuracy": 0.8707847503536488,
+    "precision": 0.9382701421800947,
+    "recall": 0.9557084238474536,
+    "specificity": 0.7858610768598439,
+    "f1": 0.9469090039459525,
+    "f1_macro": 0.8792269977284941,
+    "f1_weighted": 0.9161840629762582,
+    "mcc": 0.7591926464731625,
+    "tn": 3824,
+    "fp": 1042,
+    "fn": 734,
+    "tp": 15838,
+    "fpr": 0.21413892314015617,
+    "fnr": 0.04429157615254646,
+    "roc_auc": 0.9156279926455759,
+    "pr_auc": 0.936214096307644,
+    "note": "semi-supervisé : train filtré sur label == 0",
+    "n_train_rows": 15122,
+    "fit_time_s": 1.1963392000179738,
+    "predict_time_ms_per_1k": 28.862510498066438
+  },
+  "stability": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "spearman_mean": 0.9936165502389844,
+    "spearman_min": 0.9921532410095233
+  },
+  "detection_rate_by_type": {
+    "A": {
+      "normal": 0.41574188244965066,
+      "ransomware": 0.6558704453441295,
+      "scanning": 0.08677337826453244,
+      "backdoor": 0.012371134020618556,
+      "dos": 0.14781401804302569,
+      "mitm": 0.6919191919191919,
+      "xss": 0.15587392550143267,
+      "ddos": 0.1260820474219044,
+      "injection": 0.027300303336703743,
+      "password": 0.012441679626749611
+    },
+    "B": {
+      "normal": 0.21413892314015617,
+      "ransomware": 1.0,
+      "scanning": 0.9991575400168492,
+      "backdoor": 1.0,
+      "dos": 0.970853573907009,
+      "mitm": 0.9848484848484849,
+      "xss": 0.9994269340974212,
+      "ddos": 0.7587504704554008,
+      "injection": 1.0,
+      "password": 0.998755832037325
+    }
+  },
+  "usefulness": [
+    "Sans aucune étiquette, le classement des scores donne ROC-AUC=0.119 et PR-AUC=0.597 (variante A, score inversé) ; au seuil par défaut le rappel est 0.096 pour une spécificité de 0.584.",
+    "Avec les étiquettes « normal » (variante B) : ROC-AUC=0.916, rappel=0.956, spécificité=0.786.",
+    "Scores stables entre graines (Spearman moyen=0.994, min=0.992) : le résultat ne dépend pas du hasard de la forêt.",
+    "Ajustement en 2.5 s et prédiction en 26.3 ms pour 1000 lignes : signal complémentaire sans coût d'annotation."
+  ],
+  "limitations": [
+    "Hypothèse de rareté violée : 77.3% des lignes de test sont des attaques ; ROC-AUC de A = 0.119 (score inversé).",
+    "Seuil par défaut inadapté : A signale 16.8% des lignes (réel : 77.3%), F1=0.157, MCC=-0.358.",
+    "Même avec le seuil oracle (non déployable) : F1=0.706, MCC=-0.294, à comparer aux modèles supervisés des notebooks 02-03.",
+    "Aucun type d'attaque n'est identifié : le modèle ne produit qu'un score d'anomalie, pas une classe.",
+    "La variante B utilise les étiquettes « normal » : elle n'est plus strictement non supervisée."
+  ]
+}

@@ -1,105 +1,394 @@
 {
+  "limitations": [
+    "Jeu de données de banc d'essai (TON_IoT) : les attaques sont majoritaires (~75 %), ce qui ne reflète pas un réseau réel.",
+    "La déduplication réduit fortement le jeu : les flux répétitifs (scans, REJ, DNS) sont comptés une seule fois.",
+    "Aucune mesure de généralisation à un autre réseau : le split est aléatoire (pas par session ni par période)."
+  ],
   "n_rows_raw": 211043,
+  "n_cols_raw": 44,
+  "n_invalid_values": 0,
   "dup_exact_raw": 20569,
-  "n_rows_dedup": 183566,
-  "n_conflicts": 12,
-  "n_rows_clean": 183554,
-  "train": 110132,
-  "valid": 36711,
-  "test": 36711,
-  "n_features": 33,
-  "balancing_probe_label": {
-    "Aucun": {
-      "n_train": 30000,
-      "balanced_acc": 0.9951,
-      "mcc": 0.9914,
-      "f1_normal": 0.9934,
-      "recall_normal": 0.9918,
-      "f1_attaque": 0.998,
-      "temps_s": 0.3716
+  "n_rows_after_exact_dedup": 108636,
+  "n_dup_removed_candidate_space": 102407,
+  "n_conflicts": 290,
+  "n_rows_clean": 108346,
+  "dedup_by_type": {
+    "normal": {
+      "brut": 50000,
+      "après doublons exacts": 25213,
+      "après conflits": 25204
     },
-    "class_weight": {
-      "n_train": 30000,
-      "balanced_acc": 0.9963,
-      "mcc": 0.9914,
-      "f1_normal": 0.9933,
-      "recall_normal": 0.9951,
-      "f1_attaque": 0.998,
-      "temps_s": 0.5052
+    "scanning": {
+      "brut": 20000,
+      "après doublons exacts": 6051,
+      "après conflits": 6045
     },
-    "RandomUnderSampler": {
-      "n_train": 13734,
-      "balanced_acc": 0.9958,
-      "mcc": 0.9888,
-      "f1_normal": 0.9914,
-      "recall_normal": 0.9955,
-      "f1_attaque": 0.9974,
-      "temps_s": 0.2023
+    "dos": {
+      "brut": 20000,
+      "après doublons exacts": 14531,
+      "après conflits": 14522
     },
-    "RandomOverSampler": {
-      "n_train": 46266,
-      "balanced_acc": 0.9961,
-      "mcc": 0.9923,
-      "f1_normal": 0.9941,
-      "recall_normal": 0.9938,
-      "f1_attaque": 0.9983,
-      "temps_s": 0.5868
+    "ddos": {
+      "brut": 20000,
+      "après doublons exacts": 13376,
+      "après conflits": 13283
     },
-    "SMOTE": {
-      "n_train": 46266,
-      "balanced_acc": 0.9959,
-      "mcc": 0.992,
-      "f1_normal": 0.9938,
-      "recall_normal": 0.9936,
-      "f1_attaque": 0.9982,
-      "temps_s": 1.0066
+    "password": {
+      "brut": 20000,
+      "après doublons exacts": 16080,
+      "après conflits": 16079
+    },
+    "injection": {
+      "brut": 20000,
+      "après doublons exacts": 19885,
+      "après conflits": 19786
+    },
+    "xss": {
+      "brut": 20000,
+      "après doublons exacts": 8803,
+      "après conflits": 8734
+    },
+    "backdoor": {
+      "brut": 20000,
+      "après doublons exacts": 2423,
+      "après conflits": 2423
+    },
+    "ransomware": {
+      "brut": 20000,
+      "après doublons exacts": 1235,
+      "après conflits": 1233
+    },
+    "mitm": {
+      "brut": 1043,
+      "après doublons exacts": 1039,
+      "après conflits": 1037
     }
   },
-  "balancing_probe_type": {
-    "Aucun": {
-      "n_train": 30000,
-      "balanced_acc": 0.9575,
-      "mcc": 0.9799,
-      "f1_macro": 0.9519,
-      "f1_mitm": 0.674,
-      "recall_mitm": 0.7356,
-      "temps_s": 1.0022
+  "split_sizes_initial": {
+    "train": 65007,
+    "valid": 21669,
+    "test": 21670
+  },
+  "overlap_before_pct": {
+    "valid ∩ train": 0.863,
+    "test ∩ train": 0.8353,
+    "test ∩ (train ∪ valid)": 1.0706
+  },
+  "overlap_after_pct": {
+    "valid ∩ train": 0.0,
+    "test ∩ train": 0.0,
+    "test ∩ (train ∪ valid)": 0.0
+  },
+  "n_dropped_valid_cross_split": 187,
+  "n_dropped_test_cross_split": 232,
+  "split_sizes": {
+    "train": 65007,
+    "valid": 21482,
+    "test": 21438
+  },
+  "counts_by_type_before_after_cross_split": {
+    "normal": {
+      "avant train": 15122,
+      "avant valid": 5041,
+      "avant test": 5041,
+      "après train": 15122,
+      "après valid": 4910,
+      "après test": 4866
     },
-    "class_weight": {
-      "n_train": 30000,
-      "balanced_acc": 0.9777,
-      "mcc": 0.9792,
-      "f1_macro": 0.9528,
-      "f1_mitm": 0.6828,
-      "recall_mitm": 0.9471,
-      "temps_s": 1.0884
+    "scanning": {
+      "avant train": 3627,
+      "avant valid": 1209,
+      "avant test": 1209,
+      "après train": 3627,
+      "après valid": 1191,
+      "après test": 1187
     },
-    "RandomUnderSampler": {
-      "n_train": 1710,
-      "balanced_acc": 0.9606,
-      "mcc": 0.9523,
-      "f1_macro": 0.9085,
-      "f1_mitm": 0.4037,
-      "recall_mitm": 0.9519,
-      "temps_s": 1.3874
+    "dos": {
+      "avant train": 8714,
+      "avant valid": 2904,
+      "avant test": 2904,
+      "après train": 8714,
+      "après valid": 2878,
+      "après test": 2882
     },
-    "RandomOverSampler": {
-      "n_train": 68670,
-      "balanced_acc": 0.9665,
-      "mcc": 0.981,
-      "f1_macro": 0.9554,
-      "f1_mitm": 0.6996,
-      "recall_mitm": 0.8173,
-      "temps_s": 2.3769
+    "ddos": {
+      "avant train": 7970,
+      "avant valid": 2656,
+      "avant test": 2657,
+      "après train": 7970,
+      "après valid": 2655,
+      "après test": 2657
     },
-    "SMOTE": {
-      "n_train": 68670,
-      "balanced_acc": 0.9742,
-      "mcc": 0.9805,
-      "f1_macro": 0.9565,
-      "f1_mitm": 0.7148,
-      "recall_mitm": 0.9038,
-      "temps_s": 2.9806
+    "password": {
+      "avant train": 9647,
+      "avant valid": 3216,
+      "avant test": 3216,
+      "après train": 9647,
+      "après valid": 3213,
+      "après test": 3215
+    },
+    "injection": {
+      "avant train": 11872,
+      "avant valid": 3957,
+      "avant test": 3957,
+      "après train": 11872,
+      "après valid": 3956,
+      "après test": 3956
+    },
+    "xss": {
+      "avant train": 5240,
+      "avant valid": 1747,
+      "avant test": 1747,
+      "après train": 5240,
+      "après valid": 1745,
+      "après test": 1745
+    },
+    "backdoor": {
+      "avant train": 1453,
+      "avant valid": 485,
+      "avant test": 485,
+      "après train": 1453,
+      "après valid": 485,
+      "après test": 485
+    },
+    "ransomware": {
+      "avant train": 740,
+      "avant valid": 246,
+      "avant test": 247,
+      "après train": 740,
+      "après valid": 246,
+      "après test": 247
+    },
+    "mitm": {
+      "avant train": 622,
+      "avant valid": 208,
+      "avant test": 207,
+      "après train": 622,
+      "après valid": 203,
+      "après test": 198
     }
+  },
+  "balancing_preview_counts": {
+    "label/1": {
+      "avant": 23021,
+      "Sur-échantillonnage aléatoire": 23021,
+      "SMOTE": 23021,
+      "SMOTENC": 23021
+    },
+    "label/0": {
+      "avant": 6979,
+      "Sur-échantillonnage aléatoire": 23021,
+      "SMOTE": 23021,
+      "SMOTENC": 23021
+    },
+    "type/backdoor": {
+      "avant": 671,
+      "Sur-échantillonnage aléatoire": 6979,
+      "SMOTE": 6979,
+      "SMOTENC": 6979
+    },
+    "type/ddos": {
+      "avant": 3678,
+      "Sur-échantillonnage aléatoire": 6979,
+      "SMOTE": 6979,
+      "SMOTENC": 6979
+    },
+    "type/dos": {
+      "avant": 4021,
+      "Sur-échantillonnage aléatoire": 6979,
+      "SMOTE": 6979,
+      "SMOTENC": 6979
+    },
+    "type/injection": {
+      "avant": 5479,
+      "Sur-échantillonnage aléatoire": 6979,
+      "SMOTE": 6979,
+      "SMOTENC": 6979
+    },
+    "type/mitm": {
+      "avant": 287,
+      "Sur-échantillonnage aléatoire": 6979,
+      "SMOTE": 6979,
+      "SMOTENC": 6979
+    },
+    "type/normal": {
+      "avant": 6979,
+      "Sur-échantillonnage aléatoire": 6979,
+      "SMOTE": 6979,
+      "SMOTENC": 6979
+    },
+    "type/password": {
+      "avant": 4452,
+      "Sur-échantillonnage aléatoire": 6979,
+      "SMOTE": 6979,
+      "SMOTENC": 6979
+    },
+    "type/ransomware": {
+      "avant": 341,
+      "Sur-échantillonnage aléatoire": 6979,
+      "SMOTE": 6979,
+      "SMOTENC": 6979
+    },
+    "type/scanning": {
+      "avant": 1674,
+      "Sur-échantillonnage aléatoire": 6979,
+      "SMOTE": 6979,
+      "SMOTENC": 6979
+    },
+    "type/xss": {
+      "avant": 2418,
+      "Sur-échantillonnage aléatoire": 6979,
+      "SMOTE": 6979,
+      "SMOTENC": 6979
+    }
+  },
+  "encoding_study": {
+    "documenté": {
+      "f1_macro": 0.86787,
+      "f1_macro_std": 0.00299,
+      "rmse": 0.5566
+    },
+    "alphabétique": {
+      "f1_macro": 0.86759,
+      "f1_macro_std": 0.00793,
+      "rmse": 0.63919
+    },
+    "aléatoire (moy. 5 perm.)": {
+      "f1_macro": 0.85201,
+      "f1_macro_std": 0.01775,
+      "rmse": 0.5825
+    },
+    "piloté par les données": {
+      "f1_macro": 0.88608,
+      "f1_macro_std": 0.00347,
+      "rmse": 0.47309
+    }
+  },
+  "encoding_study_per_order": {
+    "alphabétique": {
+      "f1_macro": 0.86759,
+      "rmse": 0.63919
+    },
+    "aléatoire 1": {
+      "f1_macro": 0.86934,
+      "rmse": 0.55193
+    },
+    "aléatoire 2": {
+      "f1_macro": 0.84656,
+      "rmse": 0.45711
+    },
+    "aléatoire 3": {
+      "f1_macro": 0.83595,
+      "rmse": 0.60717
+    },
+    "aléatoire 4": {
+      "f1_macro": 0.83587,
+      "rmse": 0.6732
+    },
+    "aléatoire 5": {
+      "f1_macro": 0.87231,
+      "rmse": 0.62307
+    },
+    "documenté": {
+      "f1_macro": 0.86787,
+      "rmse": 0.5566
+    },
+    "piloté par les données": {
+      "f1_macro": 0.88608,
+      "rmse": 0.47309
+    }
+  },
+  "encoding_gain_vs_documented": 0.018208147459254587,
+  "encoding_random_std": 0.01775281321414507,
+  "type_order": [
+    "normal",
+    "ransomware",
+    "scanning",
+    "backdoor",
+    "dos",
+    "mitm",
+    "xss",
+    "ddos",
+    "injection",
+    "password"
+  ],
+  "type_order_source": "piloté par les données (LDA, train)",
+  "type_order_data_driven": [
+    "normal",
+    "ransomware",
+    "scanning",
+    "backdoor",
+    "dos",
+    "mitm",
+    "xss",
+    "ddos",
+    "injection",
+    "password"
+  ],
+  "n_features": 35,
+  "numeric_cols": [
+    "dst_port",
+    "duration",
+    "src_bytes",
+    "dst_bytes",
+    "missed_bytes",
+    "src_pkts",
+    "src_ip_bytes",
+    "dst_pkts",
+    "dst_ip_bytes",
+    "dns_qclass",
+    "dns_rcode",
+    "http_request_body_len",
+    "http_response_body_len",
+    "http_status_code",
+    "has_http",
+    "has_ssl",
+    "has_weird",
+    "total_bytes",
+    "total_pkts",
+    "bytes_ratio",
+    "pkts_ratio",
+    "bytes_per_sec",
+    "pkts_per_sec",
+    "ip_overhead_src",
+    "ip_overhead_dst",
+    "same_ports"
+  ],
+  "categorical_cols": [
+    "proto",
+    "service",
+    "conn_state",
+    "dns_AA",
+    "dns_RD",
+    "dns_RA",
+    "dns_rejected",
+    "src_port_bucket",
+    "dst_port_bucket"
+  ],
+  "removed_columns": {
+    "src_ip": "identifiant d'hôte : mémorisation de l'environnement du banc d'essai",
+    "dst_ip": "identifiant d'hôte : mémorisation de l'environnement du banc d'essai",
+    "src_port": "port source éphémère : rend les flux uniques, aucune valeur sémantique (la catégorie src_port_bucket est conservée)",
+    "ssl_version": "> 99% de valeurs manquantes",
+    "ssl_cipher": "> 99% de valeurs manquantes",
+    "ssl_resumed": "> 99% de valeurs manquantes",
+    "ssl_established": "> 99% de valeurs manquantes",
+    "ssl_subject": "> 99% de valeurs manquantes",
+    "ssl_issuer": "> 99% de valeurs manquantes",
+    "http_trans_depth": "> 99% de valeurs manquantes",
+    "http_method": "> 99% de valeurs manquantes",
+    "http_uri": "> 99% de valeurs manquantes",
+    "http_version": "> 99% de valeurs manquantes",
+    "http_user_agent": "> 99% de valeurs manquantes",
+    "http_orig_mime_types": "> 99% de valeurs manquantes",
+    "http_resp_mime_types": "> 99% de valeurs manquantes",
+    "weird_name": "> 99% de valeurs manquantes",
+    "weird_addl": "> 99% de valeurs manquantes",
+    "weird_notice": "> 99% de valeurs manquantes",
+    "dns_query": "cardinalité élevée (725 modalités)",
+    "dns_qtype": "corrélée à dns_qclass (|rho|=0.996)",
+    "has_dns": "corrélée à dns_qclass (|rho|=0.997)",
+    "bytes_per_pkt_src": "corrélée à src_bytes (|rho|=0.979)",
+    "bytes_per_pkt_dst": "corrélée à dst_bytes (|rho|=0.993)"
   }
 }
